@@ -12,6 +12,8 @@ public class bollMovement : MonoBehaviour
 
     public KeyCode jump;
 
+    public int Keys;
+
     public float force;
 
     public float jumpForce;
@@ -41,7 +43,7 @@ public class bollMovement : MonoBehaviour
             rb2d.AddForce(Vector3.up * jumpForce);
         }
     }
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
 
 
@@ -51,6 +53,10 @@ public class bollMovement : MonoBehaviour
 
 
 
+        }
+        if(collision.gameObject.tag == "Key")
+        {
+            Keys += 1;
         }
     }
 }
