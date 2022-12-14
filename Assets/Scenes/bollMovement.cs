@@ -8,10 +8,13 @@ public class bollMovement : MonoBehaviour
     public KeyCode right;
     public KeyCode left;
     public KeyCode jump;
+    public KeyCode slam;
     public int Keys;
     public float force;
     public float jumpForce;
-    public bool isGrounded; 
+    public float slamForce;
+    public bool isGrounded;
+    public bool isSlamming;
 
     // Start is called before the first frame update
     void Start()
@@ -26,15 +29,20 @@ public class bollMovement : MonoBehaviour
         {
             rb2d.AddForce(Vector3.right * force * Time.deltaTime);
         }
-
         if (Input.GetKey(left))
         {
             rb2d.AddForce(Vector3.left * force * Time.deltaTime);
         }
-        if (Input.GetKey(jump) && isGrounded == true)
+
+        if (Input.GetKeyDown(jump) && isGrounded == true)
         {
             rb2d.AddForce(Vector3.up * jumpForce);
             isGrounded = false;
+        }
+        else if(Input.GetKey(slam) && isSlamming == false && isGrounded == false)
+        {
+            rb2d.AddForce(Vector3.down * slamForce);
+            isSlamming = true;
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)
@@ -47,6 +55,7 @@ public class bollMovement : MonoBehaviour
         if(collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            isSlamming = false;
         }
         if(collision.gameObject.tag == "Key")
         {
