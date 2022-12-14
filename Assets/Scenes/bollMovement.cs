@@ -41,4 +41,16 @@ public class bollMovement : MonoBehaviour
             rb2d.AddForce(Vector3.up * jumpForce);
         }
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+
+
+
+        }
+    }
 }
