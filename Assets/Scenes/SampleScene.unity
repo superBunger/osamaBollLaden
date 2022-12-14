@@ -225,7 +225,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -260,9 +260,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 8125313}
-  right: 275
-  left: 276
+  right: 100
+  left: 97
+  jump: 32
   force: 150
+  jumpForce: 75
 --- !u!1 &485828911
 GameObject:
   m_ObjectHideFlags: 0

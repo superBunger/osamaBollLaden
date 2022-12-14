@@ -38,7 +38,7 @@ public class bollMovement : MonoBehaviour
         }
         if (Input.GetKey(jump))
         {
-            rb2d.AddForce(Vector3.up * jumpForce * Time.deltaTime);
+            rb2d.AddForce(Vector3.up * jumpForce);
         }
     }
 }
