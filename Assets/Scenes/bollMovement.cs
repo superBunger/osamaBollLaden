@@ -10,7 +10,11 @@ public class bollMovement : MonoBehaviour
 
     public KeyCode left;
 
+    public KeyCode jump;
+
     public float force;
+
+    public float jumpForce;
 
     Vector3 dir;
 
@@ -31,6 +35,10 @@ public class bollMovement : MonoBehaviour
         if (Input.GetKey(left))
         {
             rb2d.AddForce(Vector3.left * force * Time.deltaTime);
+        }
+        if (Input.GetKey(jump))
+        {
+            rb2d.AddForce(Vector3.up * jumpForce * Time.deltaTime);
         }
     }
 }
