@@ -18,18 +18,18 @@ public class Square : MonoBehaviour
     void Update()
     {
  
-
+        
         timer += Time.deltaTime;
-        if (timer < 3)
+        if (timer < 4)
         {
             rb2d.AddForce(Vector3.right * force * Time.deltaTime);
         }
-        else if (timer > 3 && timer < 10)
+        else if (timer > 4 && timer < 10)
         {
             rb2d.AddForce(Vector3.left * force * Time.deltaTime);
-            
+
         }
-        else
+        else if (timer > 10)
         {
             timer = 0;
         }
