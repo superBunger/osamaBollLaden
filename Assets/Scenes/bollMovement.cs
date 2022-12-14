@@ -8,6 +8,7 @@ public class bollMovement : MonoBehaviour
     public KeyCode right;
     public KeyCode left;
     public KeyCode jump;
+    public int Keys;
     public float force;
     public float jumpForce;
     public bool isGrounded; 
@@ -46,6 +47,10 @@ public class bollMovement : MonoBehaviour
         if(collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+        }
+        if(collision.gameObject.tag == "Key")
+        {
+            Keys += 1;
         }
     }
 }
