@@ -37,7 +37,7 @@ public class bollMovement : MonoBehaviour
             isGrounded = false;
         }
     }
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
@@ -48,7 +48,7 @@ public class bollMovement : MonoBehaviour
         {
             isGrounded = true;
         }
-        if(collision.gameObject.tag == "Key")
+        if (collision.gameObject.tag == "Key")
         {
             Keys += 1;
         }
