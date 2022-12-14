@@ -5,18 +5,12 @@ using UnityEngine;
 public class bollMovement : MonoBehaviour
 {
     public Rigidbody2D rb2d;
-
     public KeyCode right;
-
     public KeyCode left;
-
     public KeyCode jump;
-
     public float force;
-
     public float jumpForce;
-
-    Vector3 dir;
+    public bool isGrounded; 
 
     // Start is called before the first frame update
     void Start()
@@ -36,21 +30,22 @@ public class bollMovement : MonoBehaviour
         {
             rb2d.AddForce(Vector3.left * force * Time.deltaTime);
         }
-        if (Input.GetKey(jump))
+        if (Input.GetKey(jump) && isGrounded == true)
         {
             rb2d.AddForce(Vector3.up * jumpForce);
+            isGrounded = false;
         }
     }
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-
-
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
+        }
 
-
-
+        if(collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
         }
     }
 }
