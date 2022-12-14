@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class bollMovement : MonoBehaviour
 {
+
+    public KeyCode right;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,9 @@ public class bollMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(right))
+        {
+
+        }
     }
 }
