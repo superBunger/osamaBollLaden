@@ -31,7 +31,6 @@ public class Square : MonoBehaviour
         }
         else
         {
-            System.Threading.Thread.Sleep(3000);
             timer = 0;
         }
     }
