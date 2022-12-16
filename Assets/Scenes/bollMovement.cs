@@ -18,7 +18,6 @@ public class bollMovement : MonoBehaviour
     public float slamForce;
     public bool isGrounded;
     public bool isSlamming;
-    public float timer;
 
     void Start()
     {
@@ -27,7 +26,6 @@ public class bollMovement : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
         if (Input.GetKey(right))
         {
             rb2d.AddForce(Vector3.right * force * Time.deltaTime);
@@ -36,23 +34,23 @@ public class bollMovement : MonoBehaviour
         {
             rb2d.AddForce(Vector3.left * force * Time.deltaTime);
         }
-
-        if (Input.GetKeyDown(jump) && isGrounded == true)
-        {
-            rb2d.AddForce(Vector3.up * jumpForce);
-            isGrounded = false;
-        }
-        if(Input.GetKey(slam) && isSlamming == false && isGrounded == false)
+        if (Input.GetKeyDown(slam) && isSlamming == false && isGrounded == false)
         {
             rb2d.AddForce(Vector3.down * slamForce);
             isSlamming = true;
         }
-
-        if (Input.GetKey(bigJump) && isGrounded == true && timer > 5)
+        if (Input.GetKeyDown(jump) && isGrounded == true && !Input.GetKey(bigJump))
         {
-            rb2d.AddForce(Vector3.up * bigJumpForce);
+            rb2d.AddForce(Vector3.up * jumpForce);
             isGrounded = false;
-            timer = 0;
+        }
+        if (Input.GetKey(bigJump) && isGrounded == true)
+        {
+            if (Input.GetKeyDown(jump) && isGrounded == true)
+            {
+                rb2d.AddForce(Vector3.up * jumpForce * bigJumpForce);
+                isGrounded = false;
+            }
         }
 
     }
