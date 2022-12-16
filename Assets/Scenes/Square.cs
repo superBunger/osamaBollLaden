@@ -14,6 +14,7 @@ public class Square : MonoBehaviour
     public float speed;
     private float distance;
     public bool isGrounded;
+    public float jumpForce;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class Square : MonoBehaviour
     {
         if (isGrounded == true)
         {
-            rb2d.AddForce(Vector3.up * 200);
+            rb2d.AddForce(Vector3.up * jumpForce);
             isGrounded = false;
         }
 
