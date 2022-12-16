@@ -34,23 +34,25 @@ public class bollMovement : MonoBehaviour
         {
             rb2d.AddForce(Vector3.left * force * Time.deltaTime);
         }
-
-        if (Input.GetKeyDown(jump) && isGrounded == true)
-        {
-            rb2d.AddForce(Vector3.up * jumpForce);
-            isGrounded = false;
-        }
-        if(Input.GetKey(slam) && isSlamming == false && isGrounded == false)
+        if(Input.GetKeyDown(slam) && isSlamming == false && isGrounded == false)
         {
             rb2d.AddForce(Vector3.down * slamForce);
             isSlamming = true;
         }
-
-        if (Input.GetKey(bigJump) && isGrounded == true)
+        if (Input.GetKeyDown(jump) && !Input.GetKey(bigJump) == isGrounded == true)
         {
-            rb2d.AddForce(Vector3.up * bigJumpForce);
+            rb2d.AddForce(Vector3.up * jumpForce);
             isGrounded = false;
         }
+        if (Input.GetKey(bigJump))
+        {
+            if(Input.GetKeyDown(jump) && isGrounded == true)
+            {
+                rb2d.AddForce(Vector3.up * jumpForce * bigJumpForce);
+                isGrounded = false;
+            }   
+        }
+
 
     }
     public void OnCollisionEnter2D(Collision2D collision)
