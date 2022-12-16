@@ -8,13 +8,16 @@ public class bollMovement : MonoBehaviour
     public KeyCode right;
     public KeyCode left;
     public KeyCode jump;
+    public KeyCode bigJump;
     public KeyCode slam;
     public int Keys;
     public float force;
     public float jumpForce;
+    public float bigJumpForce;
     public float slamForce;
     public bool isGrounded;
     public bool isSlamming;
+    
 
     void Start()
     {
@@ -37,11 +40,18 @@ public class bollMovement : MonoBehaviour
             rb2d.AddForce(Vector3.up * jumpForce);
             isGrounded = false;
         }
-        else if(Input.GetKey(slam) && isSlamming == false && isGrounded == false)
+        if(Input.GetKey(slam) && isSlamming == false && isGrounded == false)
         {
             rb2d.AddForce(Vector3.down * slamForce);
             isSlamming = true;
         }
+
+        if (Input.GetKey(bigJump) && isGrounded == true)
+        {
+            rb2d.AddForce(Vector3.up * bigJumpForce);
+            isGrounded = false;
+        }
+
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {

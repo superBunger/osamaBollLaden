@@ -263,10 +263,12 @@ MonoBehaviour:
   right: 100
   left: 97
   jump: 32
+  bigJump: 106
   slam: 115
   Keys: 0
   force: 1000
   jumpForce: 1200
+  bigJumpForce: 2000
   slamForce: 1000
   isGrounded: 0
   isSlamming: 0
