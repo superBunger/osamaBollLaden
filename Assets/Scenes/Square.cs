@@ -24,7 +24,7 @@ public class Square : MonoBehaviour
     {
  
         
-
+        // Jaga spelaren - Alexander
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
