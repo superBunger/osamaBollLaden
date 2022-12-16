@@ -47,7 +47,7 @@ public class bollMovement : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Spike")
+        if(collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
         }
@@ -57,7 +57,7 @@ public class bollMovement : MonoBehaviour
             isGrounded = true;
             isSlamming = false;
         }
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Killeble")
         {
             Destroy(collision.gameObject);
         }
