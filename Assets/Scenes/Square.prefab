@@ -151,4 +151,4 @@ MonoBehaviour:
   player: {fileID: 191166549427455565, guid: e3f0ae6afbff3a84b9cfddd413edcdee, type: 3}
   speed: 1.5
   isGrounded: 0
-  jumpForce: 2000
+  jumpForce: 500
