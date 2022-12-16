@@ -8,6 +8,11 @@ public class Square : MonoBehaviour
     public float force;
     public Rigidbody2D rb2d;
     float timer;
+       [SerializeField]
+    //Projectile
+    public GameObject player;
+    public float speed;
+    private float distance;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,19 +24,13 @@ public class Square : MonoBehaviour
     {
  
         
-        timer += Time.deltaTime;
-        if (timer < 4)
-        {
-            rb2d.AddForce(Vector3.right * force * Time.deltaTime);
-        }
-        else if (timer > 4 && timer < 10)
-        {
-            rb2d.AddForce(Vector3.left * force * Time.deltaTime);
 
-        }
-        else if (timer > 10)
-        {
-            timer = 0;
-        }
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
+
+
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(Vector3.forward);
     }
 }
