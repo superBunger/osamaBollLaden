@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bollMovement : MonoBehaviour
 {
+    [SerializeField]
     public Rigidbody2D rb2d;
     public KeyCode right;
     public KeyCode left;
@@ -17,7 +18,7 @@ public class bollMovement : MonoBehaviour
     public float slamForce;
     public bool isGrounded;
     public bool isSlamming;
-    
+    public float timer;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class bollMovement : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
         if (Input.GetKey(right))
         {
             rb2d.AddForce(Vector3.right * force * Time.deltaTime);
@@ -46,10 +48,11 @@ public class bollMovement : MonoBehaviour
             isSlamming = true;
         }
 
-        if (Input.GetKey(bigJump) && isGrounded == true)
+        if (Input.GetKey(bigJump) && isGrounded == true && timer > 5)
         {
             rb2d.AddForce(Vector3.up * bigJumpForce);
             isGrounded = false;
+            timer = 0;
         }
 
     }
