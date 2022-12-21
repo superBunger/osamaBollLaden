@@ -24,7 +24,7 @@ public class bollMovement : MonoBehaviour
     public bool lock2Unlocked;
     public bool lock3Unlocked;
     public bool allLocksUnlocked;
-
+    public int Dynamites;
 
     void Start()
     {
@@ -115,6 +115,16 @@ public class bollMovement : MonoBehaviour
         if (lock1Unlocked == true && lock2Unlocked == true && lock3Unlocked == true)
         {
             allLocksUnlocked = true;
+        }
+        if(collision.gameObject.tag == "Dynamite")
+        {
+            Dynamites += 1;
+            Destroy(collision.gameObject);
+        }
+        if(Dynamites >= 1 && collision.gameObject.tag == "KompanjonCell")
+        {
+            Destroy(collision.gameObject);
+            Dynamites -= 1;
         }
     }
 }
