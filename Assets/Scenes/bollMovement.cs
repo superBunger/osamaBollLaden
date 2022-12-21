@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class bollMovement : MonoBehaviour
 {
@@ -18,7 +20,6 @@ public class bollMovement : MonoBehaviour
     public float slamForce;
     public bool isGrounded;
     public bool isSlamming;
-
     void Start()
     {
         
@@ -58,7 +59,8 @@ public class bollMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            SceneManager.LoadScene(1);
         }
 
         if(collision.gameObject.tag == "Ground")
@@ -75,5 +77,6 @@ public class bollMovement : MonoBehaviour
             Keys += 1;
             Destroy(collision.gameObject);
         }
+            
     }
 }
