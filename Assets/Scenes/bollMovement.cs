@@ -69,7 +69,7 @@ public class bollMovement : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             //Destroy(gameObject);
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
         if(collision.gameObject.tag == "Ground")

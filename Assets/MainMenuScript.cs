@@ -4,15 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class GameOverScreen : MonoBehaviour
+public class MainMenuScript : MonoBehaviour
 {
-    public void Restart()
+    public void StartGame()
     {
         SceneManager.LoadScene(1);
-    }
-    
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(0);
     }
 }
