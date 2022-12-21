@@ -7,6 +7,14 @@ TagManager:
   - Enemy
   - Ground
   - Key
+  - Dynamite
+  - KompanjonCell
+  - CellBars
+  - Undefined
+  - Lock1
+  - Lock2
+  - Lock3
+  - LockedDoor
   layers:
   - Default
   - TransparentFX
