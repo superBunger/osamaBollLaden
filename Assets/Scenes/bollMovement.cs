@@ -18,10 +18,17 @@ public class bollMovement : MonoBehaviour
     public float slamForce;
     public bool isGrounded;
     public bool isSlamming;
+    public bool lock1Unlocked;
+    public bool lock2Unlocked;
+    public bool lock3Unlocked;
+    public bool allLocksUnlocked;
 
     void Start()
     {
-        
+        lock1Unlocked = false;
+        lock2Unlocked = false;
+        lock3Unlocked = false;
+        allLocksUnlocked = false;
     }
 
     void Update()
@@ -74,6 +81,36 @@ public class bollMovement : MonoBehaviour
         {
             Keys += 1;
             Destroy(collision.gameObject);
+        }
+        if (Keys == 1 && collision.gameObject.tag == "Lock1")
+        {
+            Destroy(collision.gameObject);
+            Keys -= 1;
+            lock1Unlocked = true;
+        }
+        if (Keys == 1 && collision.gameObject.tag == "Lock2")
+        {
+            Destroy(collision.gameObject);
+            Keys -= 1;
+            lock2Unlocked = true;
+        }
+        if (Keys == 1 && collision.gameObject.tag == "Lock3")
+        {
+            Destroy(collision.gameObject);
+            Keys -= 1;
+            lock3Unlocked = true;
+        }
+        if (allLocksUnlocked == true && collision.gameObject.tag == "LockedDoor")
+        {
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "CellBars")
+        {
+            Destroy(collision.gameObject);
+        }
+        if (lock1Unlocked == true && lock2Unlocked == true && lock3Unlocked == true)
+        {
+            allLocksUnlocked = true;
         }
     }
 }
